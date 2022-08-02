@@ -9,9 +9,7 @@
   },
   "keywords": [
     "angular",
-    "boilerplate",
     "starter-kit",
-    "material-template",
     "tailwind-template",
     "husky",
     "code-coverage",
@@ -49,7 +47,6 @@
     "@angular/compiler": "~13.3.11",
     "@angular/core": "~13.3.11",
     "@angular/forms": "~13.3.11",
-    "@angular/material": "~13.3.9",
     "@angular/platform-browser": "~13.3.11",
     "@angular/platform-browser-dynamic": "~13.3.11",
     "@angular/router": "~13.3.11",

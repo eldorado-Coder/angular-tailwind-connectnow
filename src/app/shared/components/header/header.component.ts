@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +9,14 @@ import { FormControl } from '@angular/forms';
 })
 export class HeaderComponent {
   control = new FormControl();
+
+  constructor(private router: Router) {}
+
+  public go2Home() {
+    this.router.navigate(['/']);
+  }
+
+  public go2Contact() {
+    this.router.navigate(['/contact']);
+  }
 }
