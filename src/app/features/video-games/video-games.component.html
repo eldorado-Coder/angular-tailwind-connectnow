@@ -1,0 +1,43 @@
+<div class="bg-background-body flex px-20">
+    <div class="w-full laptop:w-1/4">
+        <div class="bg-background-card p-6 text-text-default">
+            <p class="text-lg py-3 text-text-title">Filter Results</p>
+            <div class="py-4">
+                <label for="small-input" class="text-text-title block mb-2 text-sm font-medium  dark:text-gray-300">Name (contains)</label>
+                <input type="text" placeholder="Text String"  id="small-input" class="block border-none p-2 w-full  sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input">
+            </div>
+            <div class="py-4">
+                <label for="score" class="text-text-title block mb-2 text-sm font-medium">Minimum Score</label>
+                <input type="text" placeholder="1 - 10"  id="score" class="text-text-default block border-none p-2 w-full  sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input">
+            </div>
+            <label for="countries" class="text-text-title block mb-2 text-sm font-medium">Order By</label>
+            <select id="countries" class="text-text-default bg-background-input border-none text-sm block w-full p-2.5" >
+                <option class="bg-background-input" selected>Release Date</option>
+                <option class="bg-background-input" value="US">Score</option>
+                <option class="bg-background-input" value="CA">Name</option>
+            </select>
+            <div class="flex">
+                <button class="ml-auto bg-button-default hover:opacity-80 text-white font-bold py-2 px-4 mt-10">Clear</button>
+            </div>
+        </div>
+    </div>
+    <div class="w-full laptop:w-3/4 pl-8">
+        <div *ngFor="let item of [0,1,2,3,4]">
+            <div class="bg-background-black pl-20 mb-5">
+                <div class="bg-background-card p-5 flex">
+                    <div class="w-10/12">
+                        <p class="text-text-title text-lg">Game Title</p>
+                        <p class="text-text-default pb-3">Release Date: DD/MM/YY </p>
+                        <span class="text-text-default">
+                            [summary]: The classic galactical adventure arrives on Nintendo Switch! \n \nThe tyrant Lassic rules the cosmos, and it is up to you to defeat his evil reign. Witness the revival of this defining RPG in SEGA AGES Phantasy Star. \n \nTake advantage of the new dungeon map display and the acclaimed “Ages Mode” as you traverse tricky dungeon mazes and battle ferocious 8-bit beasts. Phantasy Star has claimed its place as a pioneer RPG and its retro-spirit is sure to find a home in the hearts of old and new fans alike.
+                        </span>
+                    </div>
+                    <div class="w-2/12 flex justify-center items-center">
+                        <span class="block bg-button-default p-3 rounded-full text-xs w-2 h-2">4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
