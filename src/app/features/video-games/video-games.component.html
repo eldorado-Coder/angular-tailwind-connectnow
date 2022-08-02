@@ -3,38 +3,49 @@
         <div class="bg-background-card p-6 text-text-default">
             <p class="text-lg py-3 text-text-title">Filter Results</p>
             <div class="py-4">
-                <label for="small-input" class="text-text-title block mb-2 text-sm font-medium  dark:text-gray-300">Name (contains)</label>
-                <input type="text" placeholder="Text String"  id="small-input" class="block border-none p-2 w-full  sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input">
+                <label for="name-input" class="text-text-title block mb-2 text-sm font-medium  dark:text-gray-300">Name (contains)</label>
+                <input type="text" (change)="onNameFilter($event)"  placeholder="Text String"  id="name-input" class="block border-none p-2 w-full  sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input">
             </div>
             <div class="py-4">
                 <label for="score" class="text-text-title block mb-2 text-sm font-medium">Minimum Score</label>
-                <input type="text" placeholder="1 - 10"  id="score" class="text-text-default block border-none p-2 w-full  sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input">
+                <input type="text" placeholder="1 - 10" (change)="onScoreFilter($event)"  id="score" class="text-text-default block border-none p-2 w-full  sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input">
             </div>
             <label for="countries" class="text-text-title block mb-2 text-sm font-medium">Order By</label>
-            <select id="countries" class="text-text-default bg-background-input border-none text-sm block w-full p-2.5" >
-                <option class="bg-background-input" selected>Release Date</option>
-                <option class="bg-background-input" value="US">Score</option>
-                <option class="bg-background-input" value="CA">Name</option>
-            </select>
+            <div class="flex items-center">
+                <div>
+                    <button type="button" class="bg-button-default py-1 hover:opacity-80">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </button>
+                    <!-- <button type="button" class="bg-button-default py-1 hover:opacity-80">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7l4-4m0 0l4 4m-4-4v18" /></svg>
+                    </button> -->
+                </div>
+                <select id="countries" class="text-text-default bg-background-input border-none text-sm block w-full p-2.5" >
+                    <option class="bg-background-input" selected>Release Date</option>
+                    <option class="bg-background-input" value="US">Score</option>
+                    <option class="bg-background-input" value="CA">Name</option>
+                </select>
+                
+            </div>
             <div class="flex">
                 <button class="ml-auto bg-button-default hover:opacity-80 text-text-white font-bold py-2 px-4 mt-10">Clear</button>
             </div>
         </div>
     </div>
     <div class="w-full laptop:w-3/4 pl-8">
-        <div *ngFor="let item of [0,1,2,3,4]">
+        <div *ngFor="let item of filterList">
             <div class="bg-background-black pl-20 mb-5">
                 <div class="bg-background-card p-5 flex">
                     <div class="w-10/12">
-                        <p class="text-text-title text-lg">Game Title</p>
-                        <p class="text-text-default pb-3">Release Date: DD/MM/YY </p>
+                        <p class="text-text-title text-lg">{{item.name}}</p>
+                        <p class="text-text-default pb-3">Release Date: {{item.first_release_date}} </p>
                         <span class="text-text-default">
-                            [summary]: The classic galactical adventure arrives on Nintendo Switch! \n \nThe tyrant Lassic rules the cosmos, and it is up to you to defeat his evil reign. Witness the revival of this defining RPG in SEGA AGES Phantasy Star. \n \nTake advantage of the new dungeon map display and the acclaimed “Ages Mode” as you traverse tricky dungeon mazes and battle ferocious 8-bit beasts. Phantasy Star has claimed its place as a pioneer RPG and its retro-spirit is sure to find a home in the hearts of old and new fans alike.
+                            [Summary]: {{item.summary}}
                         </span>
                     </div>
                     <div class="w-2/12 flex justify-center items-center">
                         <span class="bg-button-default p-3 rounded-full w-8 h-8 flex justify-center items-center">
-                            <span class="text-text-default font-extrabold text-lg">4</span></span>
+                            <span class="text-text-default font-extrabold text-lg">{{item.rating | number : '1.0-0'}}</span></span>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, Subject, timer } from 'rxjs';
+import { filter, switchMap, takeUntil } from 'rxjs/operators';
 import { GamesService } from './video-games.service';
 import { Game } from '../../core/models/video-games.model';
 
@@ -11,7 +11,14 @@ import { Game } from '../../core/models/video-games.model';
 })
 export class VideoGamesComponent implements OnInit, OnDestroy{
   
-  GameList: Game[] =[];
+  gameList: Game[] = [];
+  delay: number = 2000;
+  loadingIndicator$!: Observable<boolean>;
+  filterList: Game[] = [];
+  name: string = "";
+  score: number = 0;
+  orderAsec: boolean = true;
+  orderOption: Number = 0; // 0: Release Date, 1: Score, 2: Name
 
   private destroy$ = new Subject();
   constructor(private gameService: GamesService) {
@@ -19,11 +26,34 @@ export class VideoGamesComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
-    this.gameService.get()
+    timer(this.delay)
+      .pipe(switchMap( () =>this.gameService.get()))
       .pipe(takeUntil(this.destroy$))
-      .subscribe(results => {
-        console.log(results);      })
+      .subscribe((results: Game[]) => {
+        this.gameList = results.map( item => {
+          item.rating = item.rating / 10;
+          return item;
+        });
+        this.filterList = this.gameList;
+    });
   }
+
+  onNameFilter(e: any)  {
+    this.filterList = this.gameList.filter(list => {
+      return list.name.includes(e.target.value);
+    })
+  }
+
+  onScoreFilter(e: any) {
+    this.filterList = this.gameList.filter(list => {
+      return list.rating > e.target.value
+    })
+  }
+
+  onOrder() {
+
+  }
+  
 
   ngOnDestroy() {
     this.destroy$.next();
