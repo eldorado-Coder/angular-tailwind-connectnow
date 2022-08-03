@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class VideoGamesComponent implements OnInit, OnDestroy{
   
   gameList: Game[] = [];
-  delay: number = 0;
+  delay: number = 10000000;
   filterList: Game[] = [];
   orderOption: Number = 0; // 0: Release Date, 1: Score, 2: Name
   orderList: any = [
@@ -22,6 +22,7 @@ export class VideoGamesComponent implements OnInit, OnDestroy{
   ];
   onAsc: boolean = true;
   innerWidth: number = 1000;
+  onLoading: boolean = true;
 
   searchForm!: FormGroup;
   loadingIndicator$!: Observable<boolean>;
@@ -47,6 +48,7 @@ export class VideoGamesComponent implements OnInit, OnDestroy{
         });
         /**selected filter option */
         this.filterList = this.gameList.sort((a, b) => (a.first_release_date < b.first_release_date ? -1 : 1));
+        this.onLoading = false;
     });
     this.searchForm.get('name')?.valueChanges.subscribe((v) => this.onNameFilter(v));
     this.searchForm.get('score')?.valueChanges.subscribe((v) => this.onScoreFilter(v));
