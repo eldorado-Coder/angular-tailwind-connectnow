@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class VideoGamesComponent implements OnInit, OnDestroy{
   
   gameList: Game[] = [];
-  delay: number = 10000000;
+  delay: number = 2000;
   filterList: Game[] = [];
   orderOption: Number = 0; // 0: Release Date, 1: Score, 2: Name
   orderList: any = [
