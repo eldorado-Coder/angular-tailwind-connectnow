@@ -1,15 +1,27 @@
 
-<div class="bg-background-body flex px-20">
+<div class="bg-background-body laptop:px-20 flex flex-col laptop:flex-row">
     <div class="w-full laptop:w-1/4">
-        <div class="bg-background-card p-6 text-text-default">
+        <form [formGroup]="searchForm" class="bg-background-card p-6 text-text-default">
             <p class="text-lg py-3 text-text-title">Filter Results</p>
             <div class="py-4">
                 <label for="name-input" class="text-text-title block mb-2 text-sm font-medium  dark:text-gray-300">Name (contains)</label>
-                <input type="text" (change)="onNameFilter($event)"  placeholder="Text String"  id="name-input" class="block border-none p-2 w-full  sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input">
+                <input type="text"
+                    placeholder="Text String"
+                    id="name" 
+                    class="block border-none p-2 w-full  sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input"
+                    formControlName="name"
+                    autocomplete="name"
+                >
             </div>
             <div class="py-4">
                 <label for="score" class="text-text-title block mb-2 text-sm font-medium">Minimum Score</label>
-                <input type="number" placeholder="1 - 10" (change)="onScoreFilter($event)"  id="score" class="text-text-default block border-none p-2 w-full  sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input">
+                <input type="number" 
+                    placeholder="1 - 10" 
+                    id="score" 
+                    class="text-text-default block border-none p-2 w-full sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input"
+                    formControlName="score"
+                    autocomplete="score"
+                >
             </div>
             <label for="countries" class="text-text-title block mb-2 text-sm font-medium">Order By</label>
             <div class="flex items-center">
@@ -22,7 +34,12 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7l4-4m0 0l4 4m-4-4v18" /></svg>
                     </button>
                 </div>
-                <select id="orderLists" class="text-text-default bg-background-input border-none text-sm block w-full p-2.5" (change)="onSort($event)">
+                <select 
+                    id="sortVal" 
+                    class="text-text-default bg-background-input border-none text-sm block w-full p-2.5" 
+                    formControlName="sortVal"
+                    autocomplete="sortVal"
+                >
                     <option *ngFor="let list of orderList" [value]="list.key">
                         {{list.label}}
                     </option>
@@ -30,28 +47,43 @@
                 
             </div>
             <div class="flex">
-                <button class="ml-auto bg-button-default hover:opacity-80 text-text-white font-bold py-2 px-4 mt-10">Clear</button>
+                <button class="ml-auto bg-button-default hover:opacity-80 text-text-white font-bold py-2 px-4 mt-10" (click)="onClear()">Clear</button>
             </div>
-        </div>
+        </form>
     </div>
      
-    <div class="w-full laptop:w-3/4 pl-8">
+    <div class="w-full laptop:w-3/4 pl-2 latop:pl-8">
         <!-- <div class="flex items-center justify-center ">
             <div *ngIf="spinnerService.visibility | async" class="w-40 h-40 border-t-4 border-b-4 border-green-900 rounded-full animate-spin"></div>
         </div>    -->
         <div *ngFor="let item of filterList">
-            <div class="bg-background-black pl-20 mb-5">
+            <div *ngIf="innerWidth > 540" class="bg-background-black pl-12 tablet:pl-24 laptop:pl-36 mb-5">
                 <div class="bg-background-card p-5 flex">
-                    <div class="w-10/12">
+                    <div class="w-11/12">
                         <p class="text-text-title text-lg">{{item.name}}</p>
                         <p class="text-text-default pb-3">Release Date: {{item.first_release_date}} </p>
                         <span class="text-text-default">
                             [Summary]: {{item.summary}}
                         </span>
                     </div>
-                    <div class="w-2/12 flex justify-center items-center">
+                    <div class="w-1/12 flex justify-center items-center">
                         <span class="bg-button-default p-3 rounded-full w-8 h-8 flex justify-center items-center">
-                            <span class="text-text-default font-extrabold text-lg">{{item.rating | number : '1.0-0'}}</span></span>
+                        <span class="text-text-title font-extrabold text-lg">{{item.rating | number : '1.0-0'}}</span></span>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="innerWidth <= 540" class="bg-background-black mt-5 pt-40 relative">
+                <div class="bg-background-card flex flex-col w-full p-2">
+                    <div class="absolute top-6 right-6">
+                        <span class="bg-button-default p-3 rounded-full w-4 h-4 flex justify-center items-center">
+                        <span class="text-text-default font-extrabold text-sm">{{item.rating | number : '1.0-0'}}</span></span>
+                    </div>
+                    <div class="w-full">
+                        <p class="text-text-title text-sm">{{item.name}}</p>
+                        <p class="text-text-default pb-3 text-xs">Release Date: {{item.first_release_date}} </p>
+                        <span class="text-text-default text-xs">
+                            [Summary]: {{item.summary}}
+                        </span>
                     </div>
                 </div>
             </div>

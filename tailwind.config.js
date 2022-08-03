@@ -44,6 +44,7 @@ module.exports = {
       lg: '25px',
       xl: '35px',
       '2xl': '45px',
+      '2.5xl': '60px',
       '3xl': '75px',
     },
     colors: {

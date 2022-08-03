@@ -1,4 +1,11 @@
-<div class="w-full text-default uppercasce px-12 py-20 text-xl text-text-title bg-background-body">
-  <a class="px-12 block laptop:inline-block uppercase cursor-pointer" (click)="go2Home()">video games</a>  
-  <a class="px-12 block laptop:inline-block uppercase cursor-pointer" (click)="go2Contact()">contact</a>  
+<div class="border-none flex flex-col laptop:flex-row laptop:items-center w-full text-default uppercasce px-1 laptop:px-12 py-2 laptop:py-4 tablet:text-base laptop:text-xl text-text-title bg-background-body">
+    <div class="relative">
+      <a class="pl-6 laptop:pl-12 laptop:pr-6 block laptop:inline-block uppercase laptop:text-2.5xl"
+        [ngClass]="{'opacity-0': !onHome, 'opacity-30': onHome}">video</a>  
+      <a class="absolute w-80 pl-10 top-2 laptop:left-24 laptop:top-11 inline-block uppercase cursor-pointer" (click)="go2Home()">video games</a>  
+    </div>
+    <div class="relative">
+      <a class="pl-6 laptop:pl-40 block laptop:inline-block uppercase laptop:text-2.5xl" [ngClass]="{'opacity-0': onHome, 'opacity-30': !onHome}">contact</a>  
+      <a class="absolute laptop:left-36 pl-10 top-2 laptop:top-11 px-12 block laptop:inline-block uppercase cursor-pointer" (click)="go2Contact()">contact</a>  
+    </div>
 </div>
