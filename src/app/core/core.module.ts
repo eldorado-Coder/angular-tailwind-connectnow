@@ -2,9 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 @NgModule({
-  declarations: [],
   imports: [CommonModule],
-  exports: [],
 })
 export class CoreModule {
   /* make sure CoreModule is imported only by the AppModule and none else */

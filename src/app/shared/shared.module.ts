@@ -1,11 +1,10 @@
-import * as shared from '@shared/index';
-
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { LoadingDirective } from './directives/loading.directive';
 
 @NgModule({
-  declarations: [...shared.components, ...shared.directives, ...shared.pipes],
-  imports: [CommonModule],
-  exports: [...shared.components, ...shared.directives, ...shared.pipes],
+  declarations: [LoadingDirective],
+  imports: [CommonModule ],
+  exports: [LoadingDirective],
 })
 export class SharedModule {}

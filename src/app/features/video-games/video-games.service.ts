@@ -1,4 +1,4 @@
-import { Game } from '../../core/models/video-games.model';
+import { Game } from '../../shared/models/video-games.model';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';

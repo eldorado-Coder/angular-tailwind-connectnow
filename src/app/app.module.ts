@@ -22,7 +22,7 @@ import { AppComponent } from './app.component';
     HeaderModule
   ],
   providers: [
-    { provide: 'BASE_URL', useValue: environment.baseurl },
+    { provide: 'BASE_URL', useValue: environment.baseurl }
   ],
   bootstrap: [AppComponent],
 })
