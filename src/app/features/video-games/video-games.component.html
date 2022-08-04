@@ -2,28 +2,28 @@
 <div class="bg-background-body laptop:px-20 flex flex-col laptop:flex-row">
     <div class="w-full laptop:w-1/4">
         <form [formGroup]="searchForm" class="bg-background-card p-6 text-text-default">
-            <p class="text-lg py-3 text-text-title">Filter Results</p>
+            <p class="font-Montserrat text-lg py-3 text-text-title">Filter Results</p>
             <div class="py-4">
-                <label for="name-input" class="text-text-title block mb-2 text-sm font-medium  dark:text-gray-300">Name (contains)</label>
+                <label for="name-input" class="font-Montserrat text-text-title block mb-2 text-sm font-medium  dark:text-gray-300">Name (contains)</label>
                 <input type="text"
                     placeholder="Text String"
                     id="name" 
-                    class="block border-none p-2 w-full  sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input"
+                    class="font-Mulish block border-none p-2 w-full  sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input"
                     formControlName="name"
                     autocomplete="name"
                 >
             </div>
             <div class="py-4">
-                <label for="score" class="text-text-title block mb-2 text-sm font-medium">Minimum Score</label>
+                <label for="score" class="font-Montserrat text-text-title block mb-2 text-sm font-medium">Minimum Score</label>
                 <input type="number" 
                     placeholder="1 - 10" 
                     id="score" 
-                    class="text-text-default block border-none p-2 w-full sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input"
+                    class="font-Mulish text-text-default block border-none p-2 w-full sm:text-xs focus:ring-blue-500 dark:bg-gray-700 bg-background-input"
                     formControlName="score"
                     autocomplete="score"
                 >
             </div>
-            <label for="countries" class="text-text-title block mb-2 text-sm font-medium">Order By</label>
+            <label for="countries" class="text-text-title block mb-2 text-sm font-medium font-Montserrat">Order By</label>
             <div class="flex items-center">
                 <div>
                     <button (click)="onOrder()" type="button"  class="bg-button-default py-1 hover:opacity-80"
@@ -36,7 +36,7 @@
                 </div>
                 <select 
                     id="sortVal" 
-                    class="text-text-default bg-background-input border-none text-sm block w-full p-2.5" 
+                    class="font-Mulish text-text-default bg-background-input border-none text-sm block w-full p-2.5" 
                     formControlName="sortVal"
                     autocomplete="sortVal"
                 >
@@ -47,7 +47,7 @@
                 
             </div>
             <div class="flex">
-                <button class="ml-auto bg-button-default hover:opacity-80 text-text-white font-bold py-2 px-4 mt-10" (click)="onClear()">Clear</button>
+                <button class="ml-auto bg-button-default hover:opacity-80 text-text-white font-bold py-2 px-4 mt-10 font-Montserrat" (click)="onClear()">Clear</button>
             </div>
         </form>
     </div>
@@ -60,9 +60,9 @@
             <div *ngIf="innerWidth > 540" class="bg-background-black pl-12 tablet:pl-24 laptop:pl-36 mb-5">
                 <div class="bg-background-card p-5 flex">
                     <div class="w-11/12">
-                        <p class="text-text-title text-lg">{{item.name}}</p>
+                        <p class="font-Montserrat text-text-title text-lg">{{item.name}}</p>
                         <p class="text-text-default pb-3">Release Date: {{item.first_release_date}} </p>
-                        <span class="text-text-default">
+                        <span class="font-Mulish text-text-default">
                             [Summary]: {{item.summary}}
                         </span>
                     </div>
@@ -75,13 +75,13 @@
             <div *ngIf="innerWidth <= 540" class="bg-background-black mt-5 pt-40 relative">
                 <div class="bg-background-card flex flex-col w-full p-2">
                     <div class="absolute top-6 right-6">
-                        <span class="bg-button-default p-3 rounded-full w-4 h-4 flex justify-center items-center">
-                        <span class="text-text-default font-extrabold text-sm">{{item.rating | number : '1.0-0'}}</span></span>
+                        <span class="font-Mulish bg-button-default p-3 rounded-full w-4 h-4 flex justify-center items-center">
+                        <span class="font-Mulish text-text-default font-extrabold text-sm">{{item.rating | number : '1.0-0'}}</span></span>
                     </div>
                     <div class="w-full">
-                        <p class="text-text-title text-sm">{{item.name}}</p>
-                        <p class="text-text-default pb-3 text-xs">Release Date: {{item.first_release_date}} </p>
-                        <span class="text-text-default text-xs">
+                        <p class="font-Montserrat text-text-title text-sm">{{item.name}}</p>
+                        <p class="font-Mulish text-text-default pb-3 text-xs">Release Date: {{item.first_release_date}} </p>
+                        <span class="font-Mulish text-text-default text-xs">
                             [Summary]: {{item.summary}}
                         </span>
                     </div>

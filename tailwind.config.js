@@ -65,6 +65,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        Montserrat: ['Montserrat', 'sans-serif'],
+        Mulish: ['Mulish', 'sans-serif'],
+      },
       width: {
         '1/10': '10%',
         '1.5/10': '15%',
